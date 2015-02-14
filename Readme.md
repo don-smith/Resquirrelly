@@ -35,7 +35,7 @@ This will also clone the Squirrel.Windows submodule. If you cloned before readin
 this, run `git submodule init` and then `git submodule update` to bring in Squirrel.Windows.
 * Restore Squirrel's NuGet packages by running `nuget restore Squirrel.Windows/Squirrel.sln`
 from Resquirrelly directory.
-* Open `Resquirrelly.sln` in VS and open `UpdateHelper.cs`.
+* Open `Resquirrelly.sln` in Visual Studio [2013] and open `UpdateHelper.cs`.
 * Edit line 6 to be the address where Resquirrelly can find the deployments
 you're going to upload.
 * Open `Squirrel/UpdateManager.cs` and comment out the last line in `RestartApp()`
@@ -81,13 +81,12 @@ display the **Restart** button.
 
 ## More info
 
-* The line of the Squirrel source code I commented out is the last line of
-`UpdateManager.RestartApp()` which closes the currently running app. I think this
+* We commented out the line in Squirrel that closes the app because I think this
 line may be called too soon, which might not be giving the call to `Update.exe`
-enough time to grab the PID of the app before shutting it down. Before
-Resquirrelly closes itself in, the button handler it is just doing an
-`await Task.Delay(1000)` to give it more time. Not at all elegant, but hopefully
-it's only temporary until I get better guidance from the community.
+enough time to grab the PID of the app before shutting it down. In Resquirrelly,
+before it closes itself, the button handler it is just waiting one second
+(`await Task.Delay(1000)`) to give `Update.exe` more time. Not at all elegant,
+but hopefully it's only temporary until I get better guidance from the community.
 
 * The script that does the builds (release.bat) is currently using a debug build.
 If you need to use a release build for whatever reason, be sure to change the

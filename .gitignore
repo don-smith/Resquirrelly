@@ -2,8 +2,8 @@
 ## Resquirrelly specific
 #################
 
-!BuildPackages/
-!Releases/
+BuildPackages/
+Releases/
 !.nuget/NuGet.exe
 
 #################
