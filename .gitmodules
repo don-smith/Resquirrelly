@@ -1,0 +1,3 @@
+[submodule "Squirrel.Windows"]
+	path = Squirrel.Windows
+	url = https://github.com/Squirrel/Squirrel.Windows.git

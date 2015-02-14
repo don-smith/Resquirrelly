@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Resquirrelly</id>
+        <version>1.0.0.0</version>
+        <title>Resquirrelly</title>
+        <authors>Resquirrelly</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Resquirrelly sample app for Squirrel</description>
+        <copyright>Resquirrelly</copyright>
+        <language>en-NZ</language>
+    </metadata>
+    <files>
+        <file src="Resquirrelly\bin\Release\Resquirrelly.exe" target="lib\net45\Resquirrelly.exe" />
+        <file src="Resquirrelly\bin\Release\Resquirrelly.exe.config" target="lib\net45\Resquirrelly.exe.config" />
+        <file src="Resquirrelly\bin\Release\DeltaCompressionDotNet.dll" target="lib\net45\DeltaCompressionDotNet.dll" />
+        <file src="Resquirrelly\bin\Release\DeltaCompressionDotNet.MsDelta.dll" target="lib\net45\DeltaCompressionDotNet.MsDelta.dll" />
+        <file src="Resquirrelly\bin\Release\DeltaCompressionDotNet.PatchApi.dll" target="lib\net45\DeltaCompressionDotNet.PatchApi.dll" />
+        <file src="Resquirrelly\bin\Release\ICSharpCode.SharpZipLib.dll" target="lib\net45\ICSharpCode.SharpZipLib.dll" />
+        <file src="Resquirrelly\bin\Release\Microsoft.Web.XmlTransform.dll" target="lib\net45\Microsoft.Web.XmlTransform.dll" />
+        <file src="Resquirrelly\bin\Release\Mono.Cecil.dll" target="lib\net45\Mono.Cecil.dll" />
+        <file src="Resquirrelly\bin\Release\Mono.Cecil.Mdb.dll" target="lib\net45\Mono.Cecil.Mdb.dll" />
+        <file src="Resquirrelly\bin\Release\Mono.Cecil.Pdb.dll" target="lib\net45\Mono.Cecil.Pdb.dll" />
+        <file src="Resquirrelly\bin\Release\Mono.Cecil.Rocks.dll" target="lib\net45\Mono.Cecil.Rocks.dll" />
+        <file src="Resquirrelly\bin\Release\NuGet.Core.dll" target="lib\net45\NuGet.Core.dll" />
+        <file src="Resquirrelly\bin\Release\Splat.dll" target="lib\net45\Splat.dll" />
+        <file src="Resquirrelly\bin\Release\Squirrel.dll" target="lib\net45\Squirrel.dll" />
+    </files>
+</package>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Resquirrelly</id>
+        <version>1.0.0.0</version>
+        <title>Resquirrelly</title>
+        <authors>Resquirrelly</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Resquirrelly sample app for Squirrel</description>
+        <copyright>Resquirrelly</copyright>
+        <language>en-NZ</language>
+    </metadata>
+    <files>
+        <file src="Resquirrelly\bin\Debug\Resquirrelly.exe" target="lib\net45\Resquirrelly.exe" />
+        <file src="Resquirrelly\bin\Debug\Resquirrelly.exe.config" target="lib\net45\Resquirrelly.exe.config" />
+        <file src="Resquirrelly\bin\Debug\Resquirrelly.pdb" target="lib\net45\Resquirrelly.pdb" />
+        <file src="Resquirrelly\bin\Debug\DeltaCompressionDotNet.dll" target="lib\net45\DeltaCompressionDotNet.dll" />
+        <file src="Resquirrelly\bin\Debug\DeltaCompressionDotNet.MsDelta.dll" target="lib\net45\DeltaCompressionDotNet.MsDelta.dll" />
+        <file src="Resquirrelly\bin\Debug\DeltaCompressionDotNet.PatchApi.dll" target="lib\net45\DeltaCompressionDotNet.PatchApi.dll" />
+        <file src="Resquirrelly\bin\Debug\ICSharpCode.SharpZipLib.dll" target="lib\net45\ICSharpCode.SharpZipLib.dll" />
+        <file src="Resquirrelly\bin\Debug\Microsoft.Web.XmlTransform.dll" target="lib\net45\Microsoft.Web.XmlTransform.dll" />
+        <file src="Resquirrelly\bin\Debug\Mono.Cecil.dll" target="lib\net45\Mono.Cecil.dll" />
+        <file src="Resquirrelly\bin\Debug\Mono.Cecil.Mdb.dll" target="lib\net45\Mono.Cecil.Mdb.dll" />
+        <file src="Resquirrelly\bin\Debug\Mono.Cecil.Pdb.dll" target="lib\net45\Mono.Cecil.Pdb.dll" />
+        <file src="Resquirrelly\bin\Debug\Mono.Cecil.Rocks.dll" target="lib\net45\Mono.Cecil.Rocks.dll" />
+        <file src="Resquirrelly\bin\Debug\NuGet.Core.dll" target="lib\net45\NuGet.Core.dll" />
+        <file src="Resquirrelly\bin\Debug\Splat.dll" target="lib\net45\Splat.dll" />
+        <file src="Resquirrelly\bin\Debug\Splat.pdb" target="lib\net45\Splat.pdb" />
+        <file src="Resquirrelly\bin\Debug\Squirrel.dll" target="lib\net45\Squirrel.dll" />
+        <file src="Resquirrelly\bin\Debug\Squirrel.pdb" target="lib\net45\Squirrel.pdb" />
+    </files>
+</package>
