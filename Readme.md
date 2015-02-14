@@ -13,12 +13,12 @@ this document will walk you through how to set up this sample and run it.
 I built this sample because I was struggling to get Squirrel to restart the app
 after it detected and downloaded an update. Part of the solution was to comment
 out a line of Squirrel code. Therefore, the Squirrel project is part of this 
-solution and includes the commented out line. I hope to change this after I get 
-more guidance from the community. More info below.
+solution as a submodule. I hope to change this after I get more guidance from 
+the community. More info below.
 
 ## Prerequisites
 
-* Hosting. You will need a place to host the deployment updates that has a 
+* Hosting. You will need a place to host the deployment updates with a 
 public URL that Resquirrelly can poll. Azure Blob storage was used in putting 
 this together, but most types of HTTP hosting (Amazon S3, GitHub Pages, etc.) 
 should work fine.
@@ -30,22 +30,24 @@ Studio (VS) [2013].
 
 ## Setup
 
-1. Using VS, open the solution and open UpdateHelper.cs.
+1. Using VS, open the solution and open `UpdateHelper.cs`.
 2. Edit line 6 to be the address where Resquirrelly can find the deployments 
 you're going to upload.
-3. Build the solution. NuGet Package Restore is enabled so the packages should 
+3. Build the solution. _NuGet Package Restore_ is enabled so the packages should 
 be downloaded and installed when you build. Be sure they do.
 
 ## The first build
 
-1. Open a command line tool (cmd.exe) and navigate to the folder of Resquirrelly's
-source code (where the *.sln file is). 
+1. Open a command line tool (cmd.exe) and navigate to Resquirrelly's source code 
+folder (where the *.sln file is). 
 2. Enter the following command: `release 1.0` and let it finish.
 3. In the Releases folder, upload `RELEASES` and `Resquirrelly-1.0-full.nupkg` to the 
 HTTP location you're hosting your deployment packages. In a real world scenario,
 you would probably also upload `ResquirrellyInstaller.exe`.
-4. Afterwards, run `ResquirrellyInstaller.exe` to install and run Resquirrelly.
+4. After the upload finishes, run `ResquirrellyInstaller.exe` to install and run 
+Resquirrelly.
 5. Leave it running.
+
 ![Version 1.0](Images/Version-1.0.png)
 
 ## Deployments
@@ -62,9 +64,13 @@ an update of the installer also.
 is the file Squirrel is polling for, so you want the other files in place first.
 6. In less than 20 seconds, Resquirrelly will detect the update, download it, and
 display the **Restart** button.
+
 ![Version 1.0 updates ready](Images/Version-1.0-restart.png)
+
 7. Select it to restart and launch Resquirrelly 1.1.
+
 ![Version 1.1](Images/Version-1.1.png)
+
 8. Deploying new versions is just a matter of repeating these steps.
 
 ## More info
@@ -81,7 +87,7 @@ it's only temporary until I get better guidance from the community.
 If you need to use a release build for whatever reason, be sure to change the 
 script to use Resquirrelly.Release.nuspec. It doesn't include the symbols.
 
-
+Let me know if you have any questions.
 
 
 
