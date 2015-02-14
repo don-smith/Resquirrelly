@@ -24,9 +24,8 @@ this together, but most types of HTTP hosting (Amazon S3, GitHub Pages, etc.)
 should work fine.
 
 * NuGet. You'll need to have the [NuGet Command Line Utility](http://nuget.org/nuget.exe)
-installed and in your %PATH%. This is used by a script thats been included to make
-doing the deployments faster/easier. You'll also need NuGet installed with Visual
-Studio (VS) [2013].
+installed and in your `%PATH%`. This is used by a script thats been included to make
+doing the deployments faster/easier. You'll also need NuGet installed with VS [2013].
 
 ## Setup
 
@@ -35,7 +34,7 @@ This will also clone the Squirrel.Windows submodule. If you cloned before readin
 this, run `git submodule init` and then `git submodule update` to bring in Squirrel.Windows.
 * Restore Squirrel's NuGet packages by running `nuget restore Squirrel.Windows/Squirrel.sln`
 from Resquirrelly directory.
-* Open `Resquirrelly.sln` in Visual Studio [2013] and open `UpdateHelper.cs`.
+* Open `Resquirrelly.sln` in VS and open `UpdateHelper.cs`.
 * Edit line 6 to be the address where Resquirrelly can find the deployments
 you're going to upload.
 * Open `Squirrel/UpdateManager.cs` and comment out the last line in `RestartApp()`
@@ -59,13 +58,13 @@ Resquirrelly.
 ## Deployments
 
 * Using VS, open `MainWindow.xaml` and change line 16 to "Version 1.1" so it will
-be obvious when the update has been applied.
+be obvious that the update has been applied.
 * Build the solution.
 * Back on the command line, enter: `release 1.1`
 * From the Releases folder, upload `Resquirrelly-1.1-delta.nupkg`,
 `Resquirrelly-1.1-full.nupkg` to your HTTP deployment location (hold off on
-`RELEASES` for the moment). In a real world scenario, you would probably upload
-an update of the installer also.
+uploading `RELEASES` for the moment). In a real world scenario, you would probably
+upload an update of the installer also.
 * Only after the other files have finished uploading, upload `RELEASES`. This
 is the file Squirrel is polling for, so you want the other files in place first.
 * In less than 20 seconds, Resquirrelly will detect the update, download it, and
@@ -73,27 +72,25 @@ display the **Restart** button.
 
 ![Version 1.0 updates ready](Images/Version-1.0-restart.png)
 
-* Select it to restart and launch Resquirrelly 1.1.
+* Select the button to restart and launch Resquirrelly 1.1.
 
 ![Version 1.1](Images/Version-1.1.png)
 
-* Deploying new versions is just a matter of repeating these steps.
+* Deploying new versions is just a matter of repeating the steps in this section.
 
 ## More info
 
-* We commented out the line in Squirrel that closes the app because I think this
-line may be called too soon, which might not be giving the call to `Update.exe`
-enough time to grab the PID of the app before shutting it down. In Resquirrelly,
-before it closes itself, the button handler it is just waiting one second
-(`await Task.Delay(1000)`) to give `Update.exe` more time. Not at all elegant,
-but hopefully it's only temporary until I get better guidance from the community.
+* We commented out the line in Squirrel's `UpdateManager` that closes the app
+because I think this line may be called too soon, which might not be giving the
+previous call to `Update.exe` enough time to grab the PID/filename of the app before
+shutting it down. In Resquirrelly, before it closes itself, the button handler
+waits one second (`await Task.Delay(1000)`) to give `Update.exe` more time.
+Not at all elegant, but hopefully it's only temporary until I get better guidance
+from the community.
 
-* The script that does the builds (release.bat) is currently using a debug build.
+* The script that does the builds (`release.bat`) is currently using a debug build.
 If you need to use a release build for whatever reason, be sure to change the
 script to use Resquirrelly.Release.nuspec. It doesn't include the symbols.
 
 Let me know if you have any questions.
-
-
-
 
