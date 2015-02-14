@@ -4,6 +4,7 @@
 
 !BuildPackages/
 !Releases/
+!.nuget/NuGet.exe
 
 #################
 ## Visual Studio
