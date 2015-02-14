@@ -30,48 +30,48 @@ Studio (VS) [2013].
 
 ## Setup
 
-1. Using VS, open the solution and open `UpdateHelper.cs`.
-2. Edit line 6 to be the address where Resquirrelly can find the deployments 
+* Using VS, open the solution and open `UpdateHelper.cs`.
+* Edit line 6 to be the address where Resquirrelly can find the deployments 
 you're going to upload.
-3. Build the solution. _NuGet Package Restore_ is enabled so the packages should 
+* Build the solution. _NuGet Package Restore_ is enabled so the packages should 
 be downloaded and installed when you build. Be sure they do.
 
 ## The first build
 
-1. Open a command line tool (cmd.exe) and navigate to Resquirrelly's source code 
+* Open a command line tool (cmd.exe) and navigate to Resquirrelly's source code 
 folder (where the *.sln file is). 
-2. Enter the following command: `release 1.0` and let it finish.
-3. In the Releases folder, upload `RELEASES` and `Resquirrelly-1.0-full.nupkg` to the 
+* Enter the following command: `release 1.0` and let it finish.
+* In the Releases folder, upload `RELEASES` and `Resquirrelly-1.0-full.nupkg` to the 
 HTTP location you're hosting your deployment packages. In a real world scenario,
 you would probably also upload `ResquirrellyInstaller.exe`.
-4. After the upload finishes, run `ResquirrellyInstaller.exe` to install and run 
+* After the upload finishes, run `ResquirrellyInstaller.exe` to install and run 
 Resquirrelly.
-5. Leave it running.
+* Leave it running.
 
 ![Version 1.0](Images/Version-1.0.png)
 
 ## Deployments
 
-1. Using VS, open `MainWindow.xaml` and change line 16 to "Version 1.1" so it will
+* Using VS, open `MainWindow.xaml` and change line 16 to "Version 1.1" so it will
 be obvious when the update has been applied.
-2. Build the solution.
-3. Back on the command line, enter: `release 1.1`
-4. From the Releases folder, upload `Resquirrelly-1.1-delta.nupkg`, 
+* Build the solution.
+* Back on the command line, enter: `release 1.1`
+* From the Releases folder, upload `Resquirrelly-1.1-delta.nupkg`, 
 `Resquirrelly-1.1-full.nupkg` to your HTTP deployment location (hold off on 
 `RELEASES` for the moment). In a real world scenario, you would probably upload 
 an update of the installer also.
-5. Only after the other files have finished uploading, upload `RELEASES`. This 
+* Only after the other files have finished uploading, upload `RELEASES`. This 
 is the file Squirrel is polling for, so you want the other files in place first.
-6. In less than 20 seconds, Resquirrelly will detect the update, download it, and
+* In less than 20 seconds, Resquirrelly will detect the update, download it, and
 display the **Restart** button.
 
 ![Version 1.0 updates ready](Images/Version-1.0-restart.png)
 
-7. Select it to restart and launch Resquirrelly 1.1.
+* Select it to restart and launch Resquirrelly 1.1.
 
 ![Version 1.1](Images/Version-1.1.png)
 
-8. Deploying new versions is just a matter of repeating these steps.
+* Deploying new versions is just a matter of repeating these steps.
 
 ## More info
 
