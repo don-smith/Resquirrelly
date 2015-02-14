@@ -8,7 +8,8 @@ for its installation and automatic updates. The app will run for the first time
 immediately after installation (like most Squirrel installed apps) and wait for
 an update. Once it detects an update (using a 20 second polling interval), it will
 show a **Restart** button, which will restart the app when selected. The rest of
-this document will walk you through how to set up this sample and run it.
+this document will walk you through how to set up this sample and run it. Although,
+**keep reading before cloning this repo**.
 
 I built this sample because I was struggling to get Squirrel to restart the app
 after it detected and downloaded an update. Part of the solution was to comment
@@ -29,20 +30,26 @@ Studio (VS) [2013].
 
 ## Setup
 
-* Using VS, open the solution and open `UpdateHelper.cs`.
+* Clone this repository with `git clone --recursive https://github.com/locksmithdon/Resquirrelly.git`
+This will also clone the Squirrel.Windows submodule. If you cloned before reading
+this, run `git submodule init` and then `git submodule update` to bring in Squirrel.Windows.
+* Restore Squirrel's NuGet packages by running `nuget restore Squirrel.Windows/Squirrel.sln`
+from Resquirrelly directory.
+* Open `Resquirrelly.sln` in VS and open `UpdateHelper.cs`.
 * Edit line 6 to be the address where Resquirrelly can find the deployments
 you're going to upload.
+* Open `Squirrel/UpdateManager.cs` and comment out the last line in `RestartApp()`
+(`Environment.Exit(0);`) at around line 184.
 * Build the solution. _NuGet Package Restore_ is enabled so the packages should
 be downloaded and installed when you build. Be sure they do.
 
 ## The first build
 
-* Open a command line tool (cmd.exe) and navigate to Resquirrelly's source code
-folder (where the *.sln file is).
-* Enter the following command: `release 1.0` and let it finish.
-* In the Releases folder, upload `RELEASES` and `Resquirrelly-1.0-full.nupkg` to the
+* Back in your command line tool (in the Resquirrelly folder), enter the following
+command: `release 1.0` and let it finish.
+* From the `Releases` folder, upload `RELEASES` and `Resquirrelly-1.0-full.nupkg` to the
 HTTP location you're hosting your deployment packages. In a real world scenario,
-you would probably also upload `ResquirrellyInstaller.exe`.
+you would probably upload `ResquirrellyInstaller.exe` also.
 * After the upload finishes, run `ResquirrellyInstaller.exe` to install and run
 Resquirrelly.
 * Leave it running.
