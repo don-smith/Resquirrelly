@@ -26,9 +26,6 @@ ECHO Successfully created Releases\Setup.exe.
 ECHO Renaming the installer to ResquirrellyInstaller.exe
 MV Releases\Setup.exe Releases\ResquirrellyInstaller.exe
 
-GOTO DONE
-
-:DONE
 ECHO.
 ECHO Done.
 GOTO EXIT
