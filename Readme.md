@@ -8,19 +8,18 @@ for its installation and automatic updates. The app will run for the first time
 immediately after installation (like most Squirrel installed apps) and wait for
 an update. Once it detects an update (using a 20 second polling interval), it will
 show a **Restart** button, which will restart the app when selected. The rest of
-this document will walk you through how to set up this sample and run it. 
+this document will walk you through how to set up this sample and run it.
 
 I built this sample because I was struggling to get Squirrel to restart the app
 after it detected and downloaded an update. Part of the solution was to comment
-out a line of Squirrel code. Therefore, the Squirrel project is part of this 
-solution as a submodule. I hope to change this after I get more guidance from 
-the community. More info below.
+out a line of Squirrel code. That's why Squirrel project is linked as a submodule.
+I hope to change this after I get more guidance from the community. More info below.
 
 ## Prerequisites
 
-* Hosting. You will need a place to host the deployment updates with a 
-public URL that Resquirrelly can poll. Azure Blob storage was used in putting 
-this together, but most types of HTTP hosting (Amazon S3, GitHub Pages, etc.) 
+* Hosting. You will need a place to host the deployment updates with a
+public URL that Resquirrelly can poll. Azure Blob storage was used in putting
+this together, but most types of HTTP hosting (Amazon S3, GitHub Pages, etc.)
 should work fine.
 
 * NuGet. You'll need to have the [NuGet Command Line Utility](http://nuget.org/nuget.exe)
@@ -31,20 +30,20 @@ Studio (VS) [2013].
 ## Setup
 
 * Using VS, open the solution and open `UpdateHelper.cs`.
-* Edit line 6 to be the address where Resquirrelly can find the deployments 
+* Edit line 6 to be the address where Resquirrelly can find the deployments
 you're going to upload.
-* Build the solution. _NuGet Package Restore_ is enabled so the packages should 
+* Build the solution. _NuGet Package Restore_ is enabled so the packages should
 be downloaded and installed when you build. Be sure they do.
 
 ## The first build
 
-* Open a command line tool (cmd.exe) and navigate to Resquirrelly's source code 
-folder (where the *.sln file is). 
+* Open a command line tool (cmd.exe) and navigate to Resquirrelly's source code
+folder (where the *.sln file is).
 * Enter the following command: `release 1.0` and let it finish.
-* In the Releases folder, upload `RELEASES` and `Resquirrelly-1.0-full.nupkg` to the 
+* In the Releases folder, upload `RELEASES` and `Resquirrelly-1.0-full.nupkg` to the
 HTTP location you're hosting your deployment packages. In a real world scenario,
 you would probably also upload `ResquirrellyInstaller.exe`.
-* After the upload finishes, run `ResquirrellyInstaller.exe` to install and run 
+* After the upload finishes, run `ResquirrellyInstaller.exe` to install and run
 Resquirrelly.
 * Leave it running.
 
@@ -56,11 +55,11 @@ Resquirrelly.
 be obvious when the update has been applied.
 * Build the solution.
 * Back on the command line, enter: `release 1.1`
-* From the Releases folder, upload `Resquirrelly-1.1-delta.nupkg`, 
-`Resquirrelly-1.1-full.nupkg` to your HTTP deployment location (hold off on 
-`RELEASES` for the moment). In a real world scenario, you would probably upload 
+* From the Releases folder, upload `Resquirrelly-1.1-delta.nupkg`,
+`Resquirrelly-1.1-full.nupkg` to your HTTP deployment location (hold off on
+`RELEASES` for the moment). In a real world scenario, you would probably upload
 an update of the installer also.
-* Only after the other files have finished uploading, upload `RELEASES`. This 
+* Only after the other files have finished uploading, upload `RELEASES`. This
 is the file Squirrel is polling for, so you want the other files in place first.
 * In less than 20 seconds, Resquirrelly will detect the update, download it, and
 display the **Restart** button.
@@ -75,16 +74,16 @@ display the **Restart** button.
 
 ## More info
 
-* The line of the Squirrel source code I commented out is the last line of 
-`UpdateManager.RestartApp()` which closes the currently running app. I think this 
-line may be called too soon, which might not be giving the call to `Update.exe` 
-enough time to grab the PID of the app before shutting it down. Before 
-Resquirrelly closes itself in, the button handler it is just doing an 
-`await Task.Delay(1000)` to give it more time. Not at all elegant, but hopefully 
+* The line of the Squirrel source code I commented out is the last line of
+`UpdateManager.RestartApp()` which closes the currently running app. I think this
+line may be called too soon, which might not be giving the call to `Update.exe`
+enough time to grab the PID of the app before shutting it down. Before
+Resquirrelly closes itself in, the button handler it is just doing an
+`await Task.Delay(1000)` to give it more time. Not at all elegant, but hopefully
 it's only temporary until I get better guidance from the community.
 
-* The script that does the builds (release.bat) is currently using a debug build. 
-If you need to use a release build for whatever reason, be sure to change the 
+* The script that does the builds (release.bat) is currently using a debug build.
+If you need to use a release build for whatever reason, be sure to change the
 script to use Resquirrelly.Release.nuspec. It doesn't include the symbols.
 
 Let me know if you have any questions.
