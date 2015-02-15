@@ -32,7 +32,7 @@ namespace Resquirrelly
                     UpdateInfo updateInfo = await mgr.CheckForUpdate();
                     if (updateInfo.FutureReleaseEntry != null)
                     {
-                        if (updateInfo.CurrentlyInstalledVersion == updateInfo.FutureReleaseEntry) return;
+                        if (updateInfo.CurrentlyInstalledVersion.Version == updateInfo.FutureReleaseEntry.Version) return;
                         await mgr.UpdateApp();
                         Dispatcher.Invoke(ShowUpdateIsAvailable);
                     }
