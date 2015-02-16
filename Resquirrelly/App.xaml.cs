@@ -25,5 +25,10 @@ namespace Resquirrelly
             }
         }
 
+        private void OnExit(object sender, ExitEventArgs e)
+        {
+            // Release the single-instance mutex
+            StartupManager.Cleanup();
+        }
     }
 }

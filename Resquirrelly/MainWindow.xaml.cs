@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Interop;
 using Squirrel;
 
 namespace Resquirrelly
@@ -57,6 +58,25 @@ namespace Resquirrelly
             Instructions.Visibility = Visibility.Hidden;
         }
 
-    }
+        // This listens for Windows messages so we can pop up this window if the
+        // user tries to launch a second instance of the application. You can 
+        // find more information in NativeMethods.cs and StartupManager.cs.
+        protected override void OnSourceInitialized(EventArgs eventArgs)
+        {
+            base.OnSourceInitialized(eventArgs);
+            var source = PresentationSource.FromVisual(this) as HwndSource;
+            if (source != null) source.AddHook(WndProc);
+        }
 
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == NativeMethods.WM_SHOWME)
+            {
+                Show();
+                WindowState = WindowState.Normal;
+            }
+            return IntPtr.Zero;
+        }
+
+    }
 }
