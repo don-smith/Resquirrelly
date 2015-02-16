@@ -5,6 +5,9 @@ using System.Windows;
 using System.Windows.Interop;
 using Squirrel;
 
+// This file would normally be mostly empty when applying the MVVM pattern,
+// but since this app attempts to be a simple and focused sample ...
+
 namespace Resquirrelly
 {
     public partial class MainWindow : Window
@@ -35,7 +38,12 @@ namespace Resquirrelly
                     {
                         if (updateInfo.CurrentlyInstalledVersion.Version == updateInfo.FutureReleaseEntry.Version) return;
                         await mgr.UpdateApp();
+
+                        // This will show a button that will let the user restart the app
                         Dispatcher.Invoke(ShowUpdateIsAvailable);
+
+                        // This will restart the app automatically
+                        //Dispatcher.InvokeAsync<Task>(ShutdownApp);
                     }
                 }
                 catch (Exception ex)
@@ -45,7 +53,12 @@ namespace Resquirrelly
             }
         }
 
-        private async void RestartButtonClicked(object sender, RoutedEventArgs e)
+        private void RestartButtonClicked(object sender, RoutedEventArgs e)
+        {
+            ShutdownApp();
+        }
+
+        private async Task ShutdownApp()
         {
             UpdateManager.RestartApp();
             await Task.Delay(1000);
